@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ivko" id="dropTableIfExists">
+        <preConditions onFail="MARK_RAN">
+            <tableExists schemaName="travel_agency" tableName="tours"/>
+        </preConditions>
+        <dropTable cascadeConstraints="true" tableName="tours"/>
+    </changeSet>
+    <changeSet id="create_tours" author="ivko">
+        <validCheckSum>7:8d213e1c87d198d40ce1e261642093e2</validCheckSum>
+        <createTable tableName="tours">
+            <column name="id"
+                    type="INT"
+                    autoIncrement="true"
+                    startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="peopleCount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hotelType" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateDeparture" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateArrival" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isRegistered" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isHot" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isPaidFor" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isCanceled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="tag-1.3" author="ivko">
+        <tagDatabase tag="1.3"/>
+    </changeSet>
+</databaseChangeLog>

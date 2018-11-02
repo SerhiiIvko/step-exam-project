@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="insert_tours" author="ivko">
+        <insert tableName="tours">
+            <column name="type" value="shopping"/>
+            <column name="price" valueNumeric="6000"/>
+            <column name="peopleCount" valueNumeric="2"/>
+            <column name="hotelType" value="five_stars"/>
+            <column name="country" value="Turkey"/>
+            <column name="dateDeparture" valueDate="2018-10-20"/>
+            <column name="dateArrival" valueDate="2018-10-30"/>
+            <column name="discount" valueNumeric="0"/>
+            <column name="isRegistered" valueBoolean="true"/>
+            <column name="isHot" valueBoolean="false"/>
+            <column name="isPaidFor" valueBoolean="true"/>
+            <column name="isCanceled" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+    <changeSet id="tag-1.7" author="ivko">
+        <tagDatabase tag="1.7"/>
+    </changeSet>
+</databaseChangeLog>

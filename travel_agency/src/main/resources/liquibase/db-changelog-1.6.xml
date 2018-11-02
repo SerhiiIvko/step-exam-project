@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="insert_customer" author="ivko">
+        <insert tableName="customers">
+            <column name="name" value="ivan"/>
+            <column name="surname" value="ivanov"/>
+            <column name="age" valueNumeric="30"/>
+            <column name="email" value="ivanov@ivanov.uk"/>
+            <column name="password" value="ivanov"/>
+            <column name="isBlocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="customers">
+            <column name="name" value="petr"/>
+            <column name="surname" value="petrov"/>
+            <column name="age" valueNumeric="30"/>
+            <column name="email" value="petrov@petrov.uk"/>
+            <column name="password" value="petrov"/>
+            <column name="isBlocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="customers">
+            <column name="name" value="pavlik"/>
+            <column name="surname" value="morozov"/>
+            <column name="age" valueNumeric="15"/>
+            <column name="email" value="morozov@morozov.uk"/>
+            <column name="password" value="morozov"/>
+            <column name="isBlocked" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+    <changeSet id="tag-1.6" author="ivko">
+        <tagDatabase tag="1.6"/>
+    </changeSet>
+</databaseChangeLog>

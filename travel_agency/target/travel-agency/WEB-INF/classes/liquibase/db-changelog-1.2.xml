@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ivko" id="dropTableIfExists">
+        <preConditions onFail="MARK_RAN">
+            <tableExists schemaName="travel_agency" tableName="customers"/>
+        </preConditions>
+        <dropTable cascadeConstraints="true" tableName="customers"/>
+    </changeSet>
+    <changeSet id="create_customers" author="ivko">
+        <validCheckSum>7:8d213e1c87d198d40ce1e261642093e2</validCheckSum>
+        <createTable tableName="customers">
+            <column name="id"
+                    type="INT"
+                    autoIncrement="true"
+                    startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isBlocked" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="tag-1.2" author="ivko">
+        <tagDatabase tag="1.2"/>
+    </changeSet>
+</databaseChangeLog>

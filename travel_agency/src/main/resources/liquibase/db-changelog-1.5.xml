@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="insert_managers" author="ivko">
+        <insert tableName="managers">
+            <column name="name" value="linus"/>
+            <column name="surname" value="torvalds"/>
+            <column name="age" valueNumeric="48"/>
+            <column name="email" value="linus@linus.uk"/>
+            <column name="password" value="linus"/>
+            <column name="isManager" valueBoolean="true"/>
+            <column name="isBlocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="managers">
+            <column name="name" value="doug"/>
+            <column name="surname" value="lee"/>
+            <column name="age" valueNumeric="52"/>
+            <column name="email" value="lee@lee.uk"/>
+            <column name="password" value="lee"/>
+            <column name="isManager" valueBoolean="true"/>
+            <column name="isBlocked" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+    <changeSet id="tag-1.5" author="ivko">
+        <tagDatabase tag="1.5"/>
+    </changeSet>
+</databaseChangeLog>
