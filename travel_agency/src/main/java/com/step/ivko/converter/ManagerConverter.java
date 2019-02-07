@@ -12,7 +12,7 @@ public class ManagerConverter {
         dto.setSurname(manager.getSurname());
         dto.setAge(manager.getAge());
         dto.setEmail(manager.getEmail());
-        dto.setIsManager(manager.isManager());
+//        dto.setIsManager(manager.isManager());
         dto.setIsBlocked(manager.isBlocked());
         return dto;
     }
@@ -25,7 +25,7 @@ public class ManagerConverter {
         manager.setAge(createDto.getAge());
         manager.setEmail(createDto.getEmail());
         manager.setPassword(createDto.getPassword());
-        manager.setIsManager(createDto.getIsManager());
+//        manager.setIsManager(createDto.getIsManager());
         manager.setBlocked(createDto.getIsBlocked());
         return manager;
     }

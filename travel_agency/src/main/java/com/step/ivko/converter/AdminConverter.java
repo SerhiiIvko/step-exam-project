@@ -12,7 +12,7 @@ public class AdminConverter {
         dto.setSurname(administrator.getSurname());
         dto.setAge(administrator.getAge());
         dto.setEmail(administrator.getEmail());
-        dto.setAdmin(administrator.isAdmin());
+//        dto.setAdmin(administrator.isAdmin());
         return dto;
     }
 
@@ -24,7 +24,7 @@ public class AdminConverter {
         administrator.setAge(createDto.getAge());
         administrator.setEmail(createDto.getEmail());
         administrator.setPassword(createDto.getPassword());
-        administrator.setAdmin(createDto.getAdmin());
+//        administrator.setAdmin(createDto.getAdmin());
         return administrator;
     }
 }

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ivko
-  Date: 11.09.18
-  Time: 16:24
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -13,14 +6,38 @@
     <link rel="stylesheet" href="../libs/bootstrap-4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="../libs/jquery-3.3.1/jquery-3.3.1.js">
 
-    <title>Восстановление пароля</title>
+    <title>Страны</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         body {
             font-family: 'Ubuntu Condensed', sans-serif;
             font-size: large;
-            background-image: url("/img/orig.jpeg");
+            background-image: url("../img/orig.jpeg");
             background-size: 139%;
+        }
+
+        .imagecontainer1 {
+            width: 200px;
+            height: 200px;
+            margin: 30px;
+            background-image: url("../img/turkey.jpg");
+            display: inline-block;
+        }
+
+        .imagecontainer2 {
+            width: 200px;
+            height: 200px;
+            margin: 30px;
+            background-image: url("../img/cyprus.jpg");
+            display: inline-block;
+        }
+
+        .imagecontainer3 {
+            width: 200px;
+            height: 200px;
+            margin: 30px;
+            background-image: url("../img/egypt.jpg");
+            display: inline-block;
         }
     </style>
     <style type="text/css">
@@ -113,33 +130,14 @@
                     <p><a href="search-tour.jsp" class="">Подбор туров</a></p>
                 </div>
             </td>
-            <div>
+            <div class="row">
                 <td class="col-md-9">
                     <center>
                         <br>
-                        <br>
-                        <h1 align="center">Восстановить пароль</h1>
-                        <form action="register.jsp" method="post" class="form-horizontal">
-
-                            <div class="form-group ">
-                                <label for="e-mail" class="col-md-2 control-label">E-mail<span
-                                        class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> </label>
-                                <div class="col-md-10">
-                                    <input class="form-control" id="e-mail" name="e-mail" type="text" value=""
-                                           placeholder="e-mail"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <button type="submit" class="btn btn-primary form-control" name="command"
-                                            value="register"><span class="glyphicon glyphicon-ok"
-                                                                   aria-hidden="true"></span>
-                                        Отправить пароль на e-mail
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        <h1 align="row">Страны</h1>
+                        <div class="imagecontainer1">Турция</div>
+                        <div class="imagecontainer2">Кипр</div>
+                        <div class="imagecontainer3">Египет</div>
                     </center>
                 </td>
             </div>

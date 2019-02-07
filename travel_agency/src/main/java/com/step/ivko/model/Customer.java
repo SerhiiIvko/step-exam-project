@@ -4,13 +4,11 @@ import java.io.Serializable;
 
 public class Customer extends User implements Serializable {
     private static final long serialVersionUID = 4435588049256009124L;
-    private Integer id;
-    private String name;
-    private String surname;
-    private Integer age;
-    private String email;
-    private String password;
     private Boolean isBlocked;
+
+    public Customer(){
+        super();
+    }
 
     public Integer getId() {
         return id;

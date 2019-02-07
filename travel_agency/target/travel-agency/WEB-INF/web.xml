@@ -10,7 +10,7 @@
     </listener>
 
     <welcome-file-list>
-        <welcome-file>/pages/index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
     </welcome-file-list>
 
     <filter>
@@ -23,11 +23,11 @@
     </filter-mapping>
     <servlet>
         <servlet-name>homePage</servlet-name>
-        <jsp-file>/pages/index.jsp</jsp-file>
+        <jsp-file>/WEB-INF/views/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>homePage</servlet-name>
-        <url-pattern>/pages/</url-pattern>
+        <url-pattern>/WEB-INF/views/</url-pattern>
     </servlet-mapping>
     <!--<servlet>-->
         <!--<servlet-name>showStatusServlet</servlet-name>-->
@@ -51,15 +51,15 @@
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>*.png</url-pattern>
+        <url-pattern>/img/*.png</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>/img/*.jpg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>*.jpeg</url-pattern>
+        <url-pattern>/img/*.jpeg</url-pattern>
     </servlet-mapping>
 
 

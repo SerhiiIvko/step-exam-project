@@ -5,13 +5,13 @@ import java.util.Date;
 
 public class Administrator extends Manager implements Serializable {
     private static final long serialVersionUID = -673949647895942253L;
-    private Integer id;
-    private String name;
-    private String surname;
-    private Integer age;
-    private String email;
-    private String password;
-    private Boolean isAdmin;
+//    private Integer id;
+//    private String name;
+//    private String surname;
+//    private Integer age;
+//    private String email;
+//    private String password;
+//    private Boolean isAdmin;
 
     public Integer getId() {
         return id;
@@ -61,13 +61,13 @@ public class Administrator extends Manager implements Serializable {
         this.password = password;
     }
 
-    public Boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
+//    public Boolean isAdmin() {
+//        return isAdmin;
+//    }
+//
+//    public void setAdmin(Boolean isAdmin) {
+//        this.isAdmin = isAdmin;
+//    }
 
     @Override
     public boolean markTourAsHot() {

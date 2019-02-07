@@ -13,6 +13,25 @@ public class AdministratorDaoImpl implements AdministratorDao {
     private static final String ADMIN_BY_EMAIL_QUERY = "select * from admin where email = '%s'";
     private static final String ALL_ADMINS_QUERY = "select * from admin";
     private static final String ERROR_MESSAGE_PATTERN = "Administrator not found by %s: %s";
+    private static final String UPDATE_ADMIN_QUERY = "update admin set " +
+            "name=?, " +
+            "surname=?, " +
+            "age=?, " +
+            "email=?, " +
+            "isAdmin=?%s " +
+            "where id=?";
+    private static final String UPDATE_PASSWORD_PART = ", password=?";
+    private static final String INSERT_ADMIN_QUERY = "insert into admin (" +
+            "name, " +
+            "surname, " +
+            "age, " +
+            "email, " +
+            "password, " +
+            "isAdmin) " +
+            "values (?, ?, ?, ?, ?, ?)";
+
+    private static final String DELETE_ADMIN_QUERY = "delete from admin where id=?";
+
 
     @Override
     public Administrator getById(Integer id) {
@@ -39,7 +58,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
                 administrator.setAge(resultSet.getInt("age"));
                 administrator.setEmail(resultSet.getString("email"));
                 administrator.setPassword(resultSet.getString("password"));
-                administrator.setAdmin(resultSet.getBoolean("isAdmin"));
+//                administrator.setAdmin(resultSet.getBoolean("isAdmin"));
             }
         } catch (Exception e) {
             throw new ApplicationException("Failed to load administrator from DB", e);
@@ -64,7 +83,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
                 admin.setAge(resultSet.getInt("age"));
                 admin.setEmail(resultSet.getString("email"));
                 admin.setPassword(resultSet.getString("password"));
-                admin.setAdmin(resultSet.getBoolean("isAdmin"));
+//                admin.setAdmin(resultSet.getBoolean("isAdmin"));
                 admins.add(admin);
             }
         } catch (Exception e) {
@@ -72,15 +91,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
         }
         return admins;
     }
-
-    private static final String INSERT_ADMIN_QUERY = "insert into admin (" +
-            "name, " +
-            "surname, " +
-            "age, " +
-            "email, " +
-            "password, " +
-            "isAdmin) " +
-            "values (?, ?, ?, ?, ?, ?)";
 
     @Override
     public Administrator create(Administrator administrator) {
@@ -91,7 +101,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
             statement.setInt(3, administrator.getAge());
             statement.setString(4, administrator.getEmail());
             statement.setString(5, administrator.getPassword());
-            statement.setBoolean(6, administrator.isAdmin());
+//            statement.setBoolean(6, administrator.isAdmin());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -102,15 +112,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
         }
         return administrator;
     }
-
-    private static final String UPDATE_ADMIN_QUERY = "update admin set " +
-            "name=?, " +
-            "surname=?, " +
-            "age=?, " +
-            "email=?, " +
-            "isAdmin=?%s " +
-            "where id=?";
-    private static final String UPDATE_PASSWORD_PART = ", password=?";
 
     @Override
     public Administrator update(Administrator administrator) {
@@ -123,7 +124,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
             statement.setString(parameterCounter++, administrator.getSurname());
             statement.setInt(parameterCounter++, administrator.getAge());
             statement.setString(parameterCounter++, administrator.getEmail());
-            statement.setBoolean(parameterCounter++, administrator.isAdmin());
+//            statement.setBoolean(parameterCounter++, administrator.isAdmin());
             if (needUpdatePassword) {
                 statement.setString(parameterCounter++, administrator.getPassword());
             }
@@ -144,7 +145,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
                 statement.setString(2, administrator.getSurname());
                 statement.setInt(3, administrator.getAge());
                 statement.setString(4, administrator.getEmail());
-                statement.setBoolean(5, administrator.isAdmin());
+//                statement.setBoolean(5, administrator.isAdmin());
                 statement.setInt(6, administrator.getId());
                 statement.addBatch();
             }
@@ -153,8 +154,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
             throw new ApplicationException("Failed to update admin", e);
         }
     }
-
-    private static final String DELETE_ADMIN_QUERY = "delete from admin where id=?";
 
     @Override
     public void deleteAdministrator(Administrator administrator) {

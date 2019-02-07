@@ -5,14 +5,11 @@ import java.util.Objects;
 
 public class Manager extends User implements Serializable {
     private static final long serialVersionUID = -6760554713351224634L;
-    private Integer id;
-    private String name;
-    private String surname;
-    private Integer age;
-    private String email;
-    private String password;
-    private Boolean isManager;
     private Boolean isBlocked;
+
+    public Manager() {
+        super();
+    }
 
     public Integer getId() {
         return id;
@@ -62,12 +59,12 @@ public class Manager extends User implements Serializable {
         this.password = password;
     }
 
-    public Boolean isManager() {
-        return isManager;
+    public String getRole() {
+        return role;
     }
 
-    public void setIsManager(Boolean isManager) {
-        this.isManager = isManager;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Boolean isBlocked() {
@@ -106,13 +103,13 @@ public class Manager extends User implements Serializable {
                 Objects.equals(age, manager.age) &&
                 Objects.equals(email, manager.email) &&
                 Objects.equals(password, manager.password) &&
-                Objects.equals(isManager, manager.isManager) &&
+//                Objects.equals(isManager, manager.isManager) &&
                 Objects.equals(isBlocked, manager.isBlocked);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, name, surname, age, email, password, isManager, isBlocked);
+        return Objects.hash(super.hashCode(), id, name, surname, age, email, password, isBlocked);
     }
 
     @Override

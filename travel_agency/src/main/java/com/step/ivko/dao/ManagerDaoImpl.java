@@ -13,6 +13,23 @@ public class ManagerDaoImpl implements ManagerDao {
     private static final String MANAGER_BY_EMAIL_QUERY = "select * from managers where email = '%s'";
     private static final String ALL_MANAGERS_QUERY = "select * from managers";
     private static final String ERROR_MESSAGE_PATTERN = "Manager not found by %s: %s";
+    private static final String INSERT_MANAGER_QUERY = "insert into managers (" +
+            "name, " +
+            "surname, " +
+            "age, " +
+            "email, " +
+            "password, " +
+            "isManager, " +
+            "isBlocked) " +
+            "values (?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_MANAGER_QUERY = "update managers set " +
+            "name=?, " +
+            "surname=?, " +
+            "age=?, " +
+            "email=?%s " +
+            "where id=?";
+    private static final String UPDATE_PASSWORD_PART = ", password=?";
+    private static final String DELETE_MANAGER_QUERY = "delete from managers where id=?";
 
     @Override
     public Manager getById(Integer id) {
@@ -39,7 +56,7 @@ public class ManagerDaoImpl implements ManagerDao {
                 manager.setAge(resultSet.getInt("age"));
                 manager.setEmail(resultSet.getString("email"));
                 manager.setPassword(resultSet.getString("password"));
-                manager.setIsManager(resultSet.getBoolean("isManager"));
+//                manager.setIsManager(resultSet.getBoolean("isManager"));
                 manager.setBlocked(resultSet.getBoolean("isBlocked"));
             }
         } catch (Exception e) {
@@ -65,7 +82,7 @@ public class ManagerDaoImpl implements ManagerDao {
                 manager.setAge(resultSet.getInt("age"));
                 manager.setEmail(resultSet.getString("email"));
                 manager.setPassword(resultSet.getString("password"));
-                manager.setIsManager(resultSet.getBoolean("isManager"));
+//                manager.setIsManager(resultSet.getBoolean("isManager"));
                 manager.setBlocked(resultSet.getBoolean("isBlocked"));
                 managers.add(manager);
             }
@@ -75,15 +92,7 @@ public class ManagerDaoImpl implements ManagerDao {
         return managers;
     }
 
-    private static final String INSERT_MANAGER_QUERY = "insert into managers (" +
-            "name, " +
-            "surname, " +
-            "age, " +
-            "email, " +
-            "password, " +
-            "isManager, " +
-            "isBlocked) " +
-            "values (?, ?, ?, ?, ?, ?, ?)";
+
 
     @Override
     public Manager create(Manager manager) {
@@ -95,8 +104,8 @@ public class ManagerDaoImpl implements ManagerDao {
             statement.setInt(3, manager.getAge());
             statement.setString(4, manager.getEmail());
             statement.setString(5, manager.getPassword());
-            statement.setBoolean(6, manager.isManager());
-            statement.setBoolean(7, manager.isBlocked());
+//            statement.setBoolean(6, manager.isManager());
+            statement.setBoolean(6, manager.isBlocked());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -108,13 +117,6 @@ public class ManagerDaoImpl implements ManagerDao {
         return manager;
     }
 
-    private static final String UPDATE_MANAGER_QUERY = "update managers set " +
-            "name=?, " +
-            "surname=?, " +
-            "age=?, " +
-            "email=?%s " +
-            "where id=?";
-    private static final String UPDATE_PASSWORD_PART = ", password=?";
 
     @Override
     public Manager update(Manager manager) {
@@ -130,7 +132,7 @@ public class ManagerDaoImpl implements ManagerDao {
             if (needUpdatePassword) {
                 statement.setString(parameterCounter++, manager.getPassword());
             }
-            statement.setBoolean(parameterCounter++, manager.isManager());
+//            statement.setBoolean(parameterCounter++, manager.isManager());
             statement.setBoolean(parameterCounter++, manager.isBlocked());
             statement.setInt(parameterCounter, manager.getId());
             statement.executeUpdate();
@@ -150,8 +152,8 @@ public class ManagerDaoImpl implements ManagerDao {
                 statement.setInt(3, manager.getAge());
                 statement.setString(4, manager.getEmail());
                 statement.setInt(5, manager.getId());
-                statement.setBoolean(6, manager.isManager());
-                statement.setBoolean(7, manager.isBlocked());
+//                statement.setBoolean(6, manager.isManager());
+                statement.setBoolean(6, manager.isBlocked());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -159,8 +161,6 @@ public class ManagerDaoImpl implements ManagerDao {
             throw new ApplicationException("Failed to update managers", e);
         }
     }
-
-    private static final String DELETE_MANAGER_QUERY = "delete from managers where id=?";
 
     @Override
     public void deleteManager(Manager manager) {
